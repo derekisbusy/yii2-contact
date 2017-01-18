@@ -2,7 +2,6 @@
 
 namespace derekisbusy\contact\models\base;
 
-use derekisbusy\contact\models\ContactReasonQuery as ContactReasonQuery2;
 use derekisbusy\contact\models\ContactReasonQuery;
 use Yii;
 use yii\behaviors\BlameableBehavior;
