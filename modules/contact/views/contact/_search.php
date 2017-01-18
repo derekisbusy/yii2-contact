@@ -40,7 +40,7 @@ $url = \yii\helpers\Url::to(['user/ajax/usernames']);
     ]) ?>
 
     <?= $form->field($model, 'reason')->widget(Select2::classname(), [
-        'data' => \yii\helpers\ArrayHelper::map(\common\models\base\ContactReason::find()->asArray()->all(), 'reason', 'reason'),
+        'data' => \yii\helpers\ArrayHelper::map(\derekisbusy\contact\models\base\ContactReason::find()->asArray()->all(), 'reason', 'reason'),
         'options' => ['placeholder' => 'Select a reason ...'],
         'pluginOptions' => [
             'allowClear' => true,
