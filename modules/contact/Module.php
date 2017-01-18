@@ -2,10 +2,12 @@
 
 namespace derekisbusy\contact\modules\contact;
 
+use yii\base\Module as BaseModule;
+
 /**
  * contact module definition class
  */
-class Module extends \yii\base\Module
+class Module extends BaseModule
 {
     /**
      * @inheritdoc
@@ -20,5 +22,15 @@ class Module extends \yii\base\Module
         parent::init();
 
         // custom initialization code goes here
+    }
+    
+    public static function getUserClassname()
+    {
+        return 'dektrium\user\models\User';
+    }
+    
+    public static function getUserModelIdName()
+    {
+        return 'id';
     }
 }
