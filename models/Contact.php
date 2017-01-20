@@ -5,7 +5,7 @@ namespace derekisbusy\contact\models;
 use derekisbusy\contact\models\base\Contact as BaseContact;
 use derekisbusy\contact\models\base\ContactReason;
 use yii\db\ActiveQuery;
-use derekisbusy\contact\modules\contact\Module;
+use derekisbusy\contact\backend\modules\contact\Module;
 
 /**
  * This is the model class for table "contact".
