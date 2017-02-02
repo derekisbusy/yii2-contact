@@ -10,7 +10,7 @@ Contact form with database to assign contacts to users/departments.
 
 
 Documentation
-------------
+-------------
 
 [Installation](docs/installation.md)
 
@@ -20,10 +20,8 @@ Documentation
 
 [ContactForm widget](docs/basic-usage.md)
 
-Usage
------
+License
+-------
 
-Once the extension is installed, simply use it in your code by  :
-
-```php
-<?= \derekisbusy\contact\AutoloadExample::widget(); ?>```
+Yii-contact is released under the BSD-3 License. See the bundled [LICENSE.md](LICENSE.md)
+for details.
