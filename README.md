@@ -18,7 +18,7 @@ Documentation
 
 [Setup RBAC](docs/setup-rbac.md)
 
-[Basic usage](docs/basic-usage.md)
+[ContactForm widget](docs/basic-usage.md)
 
 Usage
 -----
