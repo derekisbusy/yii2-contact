@@ -41,7 +41,7 @@ class Contact extends ActiveRecord
             [['contact_reason_id', 'url', 'name', 'phone', 'email'], 'required'],
             [['body', 'url', 'referrer'], 'string'],
             [['name'], 'string', 'max' => 50],
-            [['email'], 'string', 'max' => 255],
+            ['email', 'email'],
             [['phone'], 'string', 'max' => 20]
         ];
     }
