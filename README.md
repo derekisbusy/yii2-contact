@@ -1,26 +1,21 @@
 Yii2 Contact Form
 =================
+
 Contact form with database to assign contacts to users/departments.
 
-Installation
+* Basic contact form widget
+* Send contact requests to multiple emails
+* Assign reasons/departments
+* Manage contact requests
+
+
+Documentation
 ------------
 
-The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
-
-Either run
-
-```
-php composer.phar require --prefer-dist derekisbusy/yii2-contact "*"
-```
-
-or add
-
-```
-"derekisbusy/yii2-contact": "*"
-```
-
-to the require section of your `composer.json` file.
-
+[Installation](docs/installation.md)
+[Setup basic access control](docs/setup-basic-access-control.md)
+[Setup RBAC](docs/setup-rbac.md)
+[Basic usage](docs/basic-usage.md)
 
 Usage
 -----

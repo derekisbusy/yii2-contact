@@ -20,7 +20,7 @@ or add
 "derekisbusy/yii2-contact": "*"
 ```
 
-to the require section of your `composer.json` file.
+to the require section of your `composer.json` file then run `composer update`.
 
 
 ## Step 2: Configure your web application
