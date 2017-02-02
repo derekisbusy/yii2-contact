@@ -23,8 +23,8 @@ class Contact extends BaseContact
             [['created_by', 'updated_by', 'assigned_to', 'contact_reason_id'], 'integer'],
             [['contact_reason_id', 'url'], 'required'],
             [['body', 'url', 'referrer'], 'string'],
-            [['name'], 'string', 'max' => 50],
-            [['email'], 'string', 'max' => 255],
+            [['name','email'], 'string', 'max' => 50],
+            ['email', 'email'],
             [['phone'], 'string', 'max' => 20]
         ]);
     }
