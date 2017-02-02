@@ -18,7 +18,7 @@ Documentation
 
 [Setup RBAC](docs/setup-rbac.md)
 
-[ContactForm widget](docs/basic-usage.md)
+[Using contact form widget](docs/basic-usage.md)
 
 License
 -------
