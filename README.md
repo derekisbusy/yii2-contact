@@ -13,8 +13,11 @@ Documentation
 ------------
 
 [Installation](docs/installation.md)
+
 [Setup basic access control](docs/setup-basic-access-control.md)
+
 [Setup RBAC](docs/setup-rbac.md)
+
 [Basic usage](docs/basic-usage.md)
 
 Usage
