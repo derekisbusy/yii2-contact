@@ -25,7 +25,7 @@ class RequestController extends Controller
         $model = new Contact();
         
         $model->url = $_SERVER['REQUEST_URI'];
-        $model->referrer = $_SERVER['HTTP_REFERER'];
+        $model->referrer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null;
         
         if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
             
