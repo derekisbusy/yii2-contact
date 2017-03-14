@@ -2,6 +2,7 @@
 
 namespace derekisbusy\contact\frontend\modules\contact\controllers;
 
+use derekisbusy\contact\frontend\modules\contact\Module;
 use derekisbusy\contact\models\base\ContactNotifyReason;
 use derekisbusy\contact\models\Contact;
 use derekisbusy\contact\models\ContactNotify;
@@ -59,7 +60,7 @@ class RequestController extends Controller
             
             return $this->refresh();
         } else {
-            return $this->render('form', [
+            return $this->render($this->module->viewSettings[Module::VIEW_CONTACT], [
                 'model' => $model,
             ]);
         }
