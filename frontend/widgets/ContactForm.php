@@ -7,6 +7,8 @@ use derekisbusy\contact\models\Contact;
 
 class ContactForm extends \yii\base\Widget
 {
+    
+    public $view = '_form';
     public $model;
     
     /**
@@ -30,6 +32,6 @@ class ContactForm extends \yii\base\Widget
     
     public function run()
     {
-        return $this->render('_form', ['model' => $this->model, 'message' => $this->message]);
+        return $this->render($this->view, ['model' => $this->model, 'message' => $this->message]);
     }
 }
