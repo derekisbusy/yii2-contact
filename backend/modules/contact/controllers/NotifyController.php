@@ -2,7 +2,7 @@
 
 namespace derekisbusy\contact\backend\modules\contact\controllers;
 
-use derekisbusy\contact\models\ContactNotifyReason;
+use derekisbusy\contact\models\base\ContactNotifyReason;
 use derekisbusy\contact\models\ContactNotify;
 use derekisbusy\contact\models\ContactNotifySearch;
 use Yii;
@@ -38,6 +38,13 @@ class NotifyController extends Controller
         $searchModel = new ContactNotifySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        if (Yii::$app->request->isAjax && !Yii::$app->request->isPjax) {
+            $response = $this->renderAjax('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+            return json_encode($response);
+        }
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

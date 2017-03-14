@@ -24,7 +24,7 @@ use kartik\widgets\Select2;
     <?= $form->field($model, 'email')->textInput(['maxlength' => true, 'placeholder' => 'Email']) ?>
 
     <?= $form->field($model, 'reasons')->widget(Select2::classname(), [
-            'data' => \yii\helpers\ArrayHelper::map(\common\models\ContactReason::find()->asArray()->all() ,'id', 'reason'),
+            'data' => \yii\helpers\ArrayHelper::map(\derekisbusy\contact\models\ContactReason::find()->asArray()->all() ,'id', 'reason'),
             'options' => [
                 'placeholder' => 'Select reasons ...',
                 'multiple' => true
