@@ -7,6 +7,11 @@ namespace derekisbusy\contact\frontend\modules\contact;
  */
 class Module extends \yii\base\Module
 {
+    const VIEW_CONTACT = 1;
+    const VIEW_FORM = 2;
+    
+    public $viewSettings = [];
+    
     /**
      * @inheritdoc
      */
@@ -24,7 +29,11 @@ class Module extends \yii\base\Module
     public function init()
     {
         parent::init();
-
-        // custom initialization code goes here
+        
+        $this->viewSettings = array_replace_recursive([
+            self::VIEW_CONTACT => 'contact',
+            self::VIEW_FORM => '_form'
+        ], $this->viewSettings);
+        
     }
 }
