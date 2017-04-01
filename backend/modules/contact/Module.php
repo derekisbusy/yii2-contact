@@ -32,13 +32,4 @@ class Module extends BaseModule
         return 'contact';
     }
     
-    public static function getUserClassname()
-    {
-        return 'dektrium\user\models\User';
-    }
-    
-    public static function getUserModelIdName()
-    {
-        return 'id';
-    }
 }
