@@ -28,6 +28,7 @@ abstract class BaseModule extends \yii\base\Module
     const PERM_MANAGE = 'manageContacts';
     const PERM_MANAGE_OWN = 'manageOwnContacts';
     const PERM_MANAGE_ASSIGNED = 'manageAssignedContacts';
+    const PERM_EXPORT = 'exportContacts';
     
     const ROLE_USER = 'contactUser';
     const ROLE_MODERATOR = 'contactModerator';
@@ -68,7 +69,10 @@ abstract class BaseModule extends \yii\base\Module
     
     
     
-    public static abstract function getModuleId();
+    public static function getModuleId()
+    {
+        return YII2_CONTACT_MODULE;
+    }
     
     /**
      * @inheritdoc
@@ -101,6 +105,7 @@ abstract class BaseModule extends \yii\base\Module
         if (defined('YII2_USER_CLASSNAME')) {
             return YII2_USER_CLASSNAME;
         }
+
         if (Yii::$app) {
             return Yii::$app->getModule(static::getModuleId())->userSettings[self::USER_CLASS];
         }
