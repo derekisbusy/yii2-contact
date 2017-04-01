@@ -1,6 +1,6 @@
 <?php
 
-class m170110_000101_create_contact_notify_reason_table extends \yii\db\Migration
+class m170110_000102_create_contact_notify_reason_table extends \yii\db\Migration
 {
     public function up()
     {
@@ -12,8 +12,8 @@ class m170110_000101_create_contact_notify_reason_table extends \yii\db\Migratio
         
         if (!in_array(Yii::$app->db->tablePrefix.'contact_notify_reason', $tables))  { 
             $this->createTable('{{%contact_notify_reason}}', [
-                'contact_notify_id' => $this->integer(11)->notNull(),
-                'contact_reason_id' => $this->integer(11)->notNull(),
+                'contact_notify_id' => $this->integer(11)->unsigned()->notNull(),
+                'contact_reason_id' => $this->integer(11)->unsigned()->notNull(),
             ], $tableOptions);
 
 

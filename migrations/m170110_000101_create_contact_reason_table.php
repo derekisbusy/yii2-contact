@@ -14,11 +14,11 @@ class m170110_000101_create_contact_reason_table extends \yii\db\Migration
         
         if (!in_array(Yii::$app->db->tablePrefix.'contact_reason', $tables))  { 
             $this->createTable('{{%contact_reason}}', [
-                'id' => $this->primaryKey(),
+                'id' => $this->primaryKey()->unsigned(),
                 'created_at' => $this->datetime(),
                 'updated_at' => $this->datetime(),
-                'created_by' => $this->integer(11),
-                'updated_by' => $this->integer(11),
+                'created_by' => $this->integer(11)->unsigned()->null(),
+                'updated_by' => $this->integer(11)->unsigned()->null(),
                 'reason' => $this->string(255),
             ], $tableOptions);
 

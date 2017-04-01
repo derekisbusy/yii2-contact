@@ -2,7 +2,7 @@
 
 use yii\db\Schema;
 
-class m170110_000101_create_contact_table extends \yii\db\Migration
+class m170110_000103_create_contact_table extends \yii\db\Migration
 {
     public function up()
     {
@@ -14,13 +14,13 @@ class m170110_000101_create_contact_table extends \yii\db\Migration
         
         if (!in_array(Yii::$app->db->tablePrefix.'contact', $tables))  { 
             $this->createTable('{{%contact}}', [
-                'id' => $this->primaryKey(),
+                'id' => $this->primaryKey()->unsigned()->null(),
                 'created_at' => $this->datetime(),
                 'updated_at' => $this->datetime(),
-                'created_by' => $this->integer(11),
-                'updated_by' => $this->integer(11),
-                'assigned_to' => $this->integer(11)->defaultValue(1),
-                'contact_reason_id' => $this->integer(11),
+                'created_by' => $this->integer(11)->unsigned()->null(),
+                'updated_by' => $this->integer(11)->unsigned()->null(),
+                'assigned_to' => $this->integer(11)->unsigned()->null()->defaultValue(1),
+                'contact_reason_id' => $this->integer(11)->unsigned(),
                 'name' => $this->string(50),
                 'email' => $this->string(255),
                 'phone' => $this->string(20),

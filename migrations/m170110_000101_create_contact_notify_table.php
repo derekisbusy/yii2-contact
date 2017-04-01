@@ -14,7 +14,7 @@ class m170110_000101_create_contact_notify_table extends \yii\db\Migration
         
         if (!in_array(Yii::$app->db->tablePrefix.'contact_notify', $tables))  { 
             $this->createTable('{{%contact_notify}}', [
-                'id' => $this->primaryKey(),
+                'id' => $this->primaryKey(11)->unsigned(),
                 'email' => $this->string(255)->notNull(),
             ], $tableOptions);
         }
