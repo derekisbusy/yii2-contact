@@ -14,8 +14,22 @@ abstract class BaseModule extends \yii\base\Module
     public $backendRoles = [];
     public $frontendRoles = [];
     
+    const MODEL_CONTACT = 1;
+    const MODEL_CONTACT_NOTIFY = 2;
+    const MODEL_CONTACT_NOTIFY_QUERY = 3;
+    const MODEL_CONTACT_NOTIFY_SEARCH = 4;
+    const MODEL_CONTACT_QUERY = 5;
+    const MODEL_CONTACT_REASON = 6;
+    const MODEL_CONTACT_REASON_QUERY = 7;
+    const MODEL_CONTACT_REASON_SEARCH = 8;
+    const MODEL_CONTACT_SEARCH = 9;
+    
+    
+    public $modelSettings = [];
+    
     public $db = 'db';
     public $userClass = 'app\models\User';
+    public $username = 'username';
     public $userTableIdColumn = 'id';
     
     
@@ -27,6 +41,18 @@ abstract class BaseModule extends \yii\base\Module
     public function init()
     {
         parent::init();
+        
+        $this->modelSettings = array_merge([
+            self::MODEL_CONTACT => 'derekisbusy\contact\models\Contact',
+            self::MODEL_CONTACT_NOTIFY => 'derekisbusy\contact\models\ContactNotify',
+            self::MODEL_CONTACT_NOTIFY_QUERY => 'derekisbusy\contact\models\ContactNotifyQuery',
+            self::MODEL_CONTACT_NOTIFY_SEARCH => 'derekisbusy\contact\models\ContactNotifySearch',
+            self::MODEL_CONTACT_QUERY => 'derekisbusy\contact\models\ContactQuery',
+            self::MODEL_CONTACT_REASON => 'derekisbusy\contact\models\ContactReason',
+            self::MODEL_CONTACT_REASON_QUERY => 'derekisbusy\contact\models\ContactReasonQuery',
+            self::MODEL_CONTACT_REASON_SEARCH => 'derekisbusy\contact\models\ContactReasonSearch',
+            self::MODEL_CONTACT_SEARCH => 'derekisbusy\contact\models\ContactSearch',
+        ], $this->modelSettings);
     }
     
     public static function getUserClassname()
