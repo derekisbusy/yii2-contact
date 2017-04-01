@@ -88,35 +88,26 @@ if (!defined('YII2_CONTACT_ADMIN_MODULE') {
     YII2_CONTACT_ADMIN_MODULE => [
         'class' => 'derekisbusy\contact\backend\modules\contact\Module',
         'userSettings' => [
-            ContactModule::USER_CLASS => 'common\models\User'
+            ContactModule::USER_CLASS => 'app\models\User'
         ]
     ],
-    'contact-admin' => 'derekisbusy\contact\frontend\modules\contact\Module',
     YII2_CONTACT_MODULE => [
         'class' => 'derekisbusy\contact\frontend\modules\contact\Module',
         'viewSettings' => [
             ContactModule::VIEW_CONTACT => '@frontend/views/site/contact'
         ],
         'userSettings' => [
-            ContactModule::USER_CLASS => 'common\models\User'
+            ContactModule::USER_CLASS => 'app\models\User'
         ]
     ],
     ...
 ],
 ...
 ```
+You can copy the frontend views from the module into your sites views and edit them as needed or use the
+default view.
 
-
-## Step 3: Configure access control for admin module
-
-This extension can be configured to work with either RBAC or basic access control. 
-
-[Setup Basic Access Control](setup-basic-access-control.md)
-
-[Setup RBAC](setup-rbac)
-
-
-## Step 4: Update your database schema
+## Step 3: Update your database schema
 
 After you downloaded and configured Yii2-rbac, the last thing you need to do is updating your database schema by 
 applying the migration:
@@ -124,3 +115,12 @@ applying the migration:
 ```bash
 $ php yii migrate/up --migrationPath=@vendor/derekisbusy/contact/migrations
 ```
+
+
+## Step 4: Configure access control for admin module
+
+This extension can be configured to work with either RBAC or basic access control. 
+
+[Setup Basic Access Control](setup-basic-access-control.md)
+
+[Setup RBAC](setup-rbac)
