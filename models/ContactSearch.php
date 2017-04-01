@@ -87,7 +87,7 @@ use yii\data\ActiveDataProvider;
             ->andFilterWhere(['like', 'body', $this->body])
             ->andFilterWhere(['like', 'url', $this->url])
             ->andFilterWhere(['like', 'referrer', $this->referrer])
-            ->andFilterWhere(['like', Module::getUserTableName().'.'.Module::getUsernameColumn(), $this->assignedTo])
+            ->andFilterWhere(['like', Module::getUserTableName().'.'.Module::getUsernameColumnName(), $this->assignedTo])
             ->andFilterWhere(['like', ContactReason::tableName().'.reason', $this->reason]);
 
         return $dataProvider;
