@@ -6,7 +6,7 @@ use yii\web\AssetBundle;
 
 class ContactCommonAsset extends AssetBundle
 {
-    public $sourcePath = '@derekisbusy/yii2-contact/backend/modules/contact/assets';
+    public $sourcePath = '@vendor/derekisbusy/yii2-contact/backend/modules/contact/assets';
     public $css = [
         'css/common.css',
     ];
