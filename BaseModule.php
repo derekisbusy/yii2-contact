@@ -77,7 +77,7 @@ abstract class BaseModule extends \yii\base\Module
     {
         parent::init();
         
-        $this->modelSettings = array_merge([
+        $this->modelSettings = array_replace_recursive([
             self::MODEL_CONTACT => 'derekisbusy\contact\models\Contact',
             self::MODEL_CONTACT_NOTIFY => 'derekisbusy\contact\models\ContactNotify',
             self::MODEL_CONTACT_NOTIFY_QUERY => 'derekisbusy\contact\models\ContactNotifyQuery',
@@ -89,7 +89,7 @@ abstract class BaseModule extends \yii\base\Module
             self::MODEL_CONTACT_SEARCH => 'derekisbusy\contact\models\ContactSearch',
         ], $this->modelSettings);
         
-        $this->userSettings = array_merge([
+        $this->userSettings = array_replace_recursive([
             self::USER_CLASS => 'app\models\User',
             self::USER_ID => 'id',
             self::USER_USERNAME => 'username'
