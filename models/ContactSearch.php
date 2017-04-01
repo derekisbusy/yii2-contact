@@ -59,8 +59,8 @@ use yii\data\ActiveDataProvider;
         ];
         
         $dataProvider->sort->attributes['assignedTo'] = [
-            'asc' => [User::tableName().'.username' => SORT_ASC],
-            'desc' => [User::tableName().'.username' => SORT_DESC],
+            'asc' => [BaseModule::getUserTableName().'.username' => SORT_ASC],
+            'desc' => [BaseModule::getUserTableName().'.username' => SORT_DESC],
         ];
 
         $this->load($params);
