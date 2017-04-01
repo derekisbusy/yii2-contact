@@ -2,10 +2,12 @@
 
 namespace derekisbusy\contact\frontend\modules\contact;
 
+use derekisbusy\contact\BaseModule;
+
 /**
  * contact module definition class
  */
-class Module extends \yii\base\Module
+class Module extends BaseModule
 {
     const VIEW_CONTACT = 1;
     const VIEW_FORM = 2;
