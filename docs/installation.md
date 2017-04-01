@@ -30,7 +30,7 @@ Add contact manager module to web application config file.
 If the project uses the Yii2 Advanced Project Template then add the following to the backend config.
 
 ```php
-if (!defined('YII2_CONTACT_MODULE') {
+if (!defined('YII2_CONTACT_MODULE')) {
     define('YII2_CONTACT_MODULE', 'contact');
 }
 
@@ -51,7 +51,7 @@ if (!defined('YII2_CONTACT_MODULE') {
 Then update the frontend config as follows:
 
 ```php
-if (!defined('YII2_CONTACT_MODULE') {
+if (!defined('YII2_CONTACT_MODULE')) {
     define('YII2_CONTACT_MODULE', 'contact');
 }
 
@@ -76,10 +76,10 @@ If the project uses the Yii2 Basic Application Template then add both the module
 but use different keys for both. For Example:
 
 ```php
-if (!defined('YII2_CONTACT_MODULE') {
+if (!defined('YII2_CONTACT_MODULE')) {
     define('YII2_CONTACT_MODULE', 'contact');
 }
-if (!defined('YII2_CONTACT_ADMIN_MODULE') {
+if (!defined('YII2_CONTACT_ADMIN_MODULE')) {
     define('YII2_CONTACT_ADMIN_MODULE', 'contact-admin');
 }
 ...
