@@ -11,9 +11,6 @@ use Yii;
 abstract class BaseModule extends \yii\base\Module
 {
     
-    public $backendRoles = [];
-    public $frontendRoles = [];
-    
     const MODEL_CONTACT = 1;
     const MODEL_CONTACT_NOTIFY = 2;
     const MODEL_CONTACT_NOTIFY_QUERY = 3;
@@ -24,13 +21,51 @@ abstract class BaseModule extends \yii\base\Module
     const MODEL_CONTACT_REASON_SEARCH = 8;
     const MODEL_CONTACT_SEARCH = 9;
     
+    const USER_CLASS = 1;
+    const USER_ID = 2;
+    const USER_USERNAME = 3;
     
-    public $modelSettings = [];
+    const PERM_MANAGE = 'manageContacts';
+    const PERM_MANAGE_OWN = 'manageOwnContacts';
+    const PERM_MANAGE_ASSIGNED = 'manageAssignedContacts';
     
+    const ROLE_USER = 'contactUser';
+    const ROLE_MODERATOR = 'contactModerator';
+    const ROLE_ADMIN = 'contactAdmin';
+    
+    /**
+     * The key for the database component of the app.
+     * @var string
+     */
     public $db = 'db';
-    public $userClass = 'app\models\User';
-    public $username = 'username';
-    public $userTableIdColumn = 'id';
+    /**
+     * Set to `true` to turn on RBAC
+     * @var type 
+     */
+    public $rbac = false;
+    /**
+     * Model settings for the module.
+     * @var array
+     */
+    public $modelSettings = [];
+    /**
+     * Settings for integration with user table.
+     * @var array 
+     */
+    public $userSettings = [];
+    /**
+     * An array of usernames that can access and manage all contacts
+     * and contact settings.
+     * @var array 
+     */
+    public $adminSettings = [];
+    /**
+     * An array of usernames that can access and manage all contacts
+     * assigned to them.
+     * @var array
+     */
+    public $moderatorSettings = [];
+    
     
     
     public static abstract function getModuleId();
@@ -53,6 +88,12 @@ abstract class BaseModule extends \yii\base\Module
             self::MODEL_CONTACT_REASON_SEARCH => 'derekisbusy\contact\models\ContactReasonSearch',
             self::MODEL_CONTACT_SEARCH => 'derekisbusy\contact\models\ContactSearch',
         ], $this->modelSettings);
+        
+        $this->userSettings = array_merge([
+            self::USER_CLASS => 'app\models\User',
+            self::USER_ID => 'id',
+            self::USER_USERNAME => 'username'
+        ],$this->userSettings);
     }
     
     public static function getUserClassname()
@@ -61,7 +102,7 @@ abstract class BaseModule extends \yii\base\Module
             return YII2_USER_CLASSNAME;
         }
         if (Yii::$app) {
-            return Yii::$app->getModule(self::getModuleId())->userClass;
+            return Yii::$app->getModule(self::getModuleId())->userSettings[self::USER_CLASS];
         }
         return 'common\models\User';
     }
@@ -78,7 +119,7 @@ abstract class BaseModule extends \yii\base\Module
             return YII2_USER_ID_COLUMN;
         }
         if (Yii::$app) {
-            return Yii::$app->getModule(self::getModuleId())->userClass;
+            return Yii::$app->getModule(self::getModuleId())->userSettings[self::USER_ID];
         }
         return 'id';
     }
@@ -90,7 +131,7 @@ abstract class BaseModule extends \yii\base\Module
             return YII2_USER_USERNAME_COLUMN;
         }
         if (Yii::$app) {
-            return Yii::$app->getModule(self::getModuleId())->userClass;
+            return Yii::$app->getModule(self::getModuleId())->userSettings[self::USER_USERNAME];
         }
         return 'username';
     }
