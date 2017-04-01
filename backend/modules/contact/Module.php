@@ -2,7 +2,7 @@
 
 namespace derekisbusy\contact\backend\modules\contact;
 
-use yii\base\Module as BaseModule;
+use derekisbusy\contact\BaseModule;
 
 /**
  * contact module definition class
@@ -22,6 +22,14 @@ class Module extends BaseModule
         parent::init();
 
         // custom initialization code goes here
+    }
+    
+    public static function getModuleId()
+    {
+        if (defined('YII2_CONTACT_BACKEND')) {
+            return YII2_CONTACT_BACKEND;
+        }
+        return 'contact';
     }
     
     public static function getUserClassname()

@@ -36,4 +36,12 @@ class Module extends \yii\base\Module
         ], $this->viewSettings);
         
     }
+    
+    public static function getModuleId()
+    {
+        if (defined('YII2_CONTACT_FRONTEND')) {
+            return YII2_CONTACT_FRONTEND;
+        }
+        return 'contact';
+    }
 }
