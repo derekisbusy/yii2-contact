@@ -22,6 +22,11 @@ class m170401_042253_rbac_int extends Migration
         $manageContacts->description = 'Manage all contacts';
         $auth->add($manageContacts);
         
+        
+        $exportContacts = $auth->createPermission(Module::PERM_EXPORT);
+        $exportContacts->description = 'Export contacts';
+        $auth->add($exportContacts);
+        
 
         $user = $auth->createRole(Module::ROLE_USER);
         $user->description = 'User can manage contacts that they created.';
@@ -38,6 +43,7 @@ class m170401_042253_rbac_int extends Migration
         $auth->add($admin);
         $auth->addChild($admin, $moderator);
         $auth->addChild($admin, $manageContacts);
+        $auth->addChild($admin, $exportContacts);
     }
 
     public function safeDown()
