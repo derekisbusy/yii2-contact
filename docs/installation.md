@@ -30,10 +30,19 @@ Add contact manager module to web application config file.
 If the project uses the Yii2 Advanced Project Template then add the following to the backend config.
 
 ```php
+if (!defined('YII2_CONTACT_MODULE') {
+    define('YII2_CONTACT_MODULE', 'contact');
+}
+
 ...
 'modules' => [
     ...
-    'contact' => 'derekisbusy\contact\backend\modules\contact\Module',
+    YII2_CONTACT_MODULE => [
+        'class' => 'derekisbusy\contact\backend\modules\contact\Module',
+        'userSettings' => [
+            ContactModule::USER_CLASS => 'common\models\User'
+        ]
+    ],
     ...
 ],
 ...
@@ -42,10 +51,22 @@ If the project uses the Yii2 Advanced Project Template then add the following to
 Then update the frontend config as follows:
 
 ```php
+if (!defined('YII2_CONTACT_MODULE') {
+    define('YII2_CONTACT_MODULE', 'contact');
+}
+
 ...
 'modules' => [
     ...
-    'contact' => 'derekisbusy\contact\frontend\modules\contact\Module',
+    YII2_CONTACT_MODULE => [
+        'class' => 'derekisbusy\contact\frontend\modules\contact\Module',
+        'viewSettings' => [
+            ContactModule::VIEW_CONTACT => '@frontend/views/site/contact'
+        ],
+        'userSettings' => [
+            ContactModule::USER_CLASS => 'common\models\User'
+        ]
+    ],
     ...
 ],
 ...
@@ -55,11 +76,31 @@ If the project uses the Yii2 Basic Application Template then add both the module
 but use different keys for both. For Example:
 
 ```php
+if (!defined('YII2_CONTACT_MODULE') {
+    define('YII2_CONTACT_MODULE', 'contact');
+}
+if (!defined('YII2_CONTACT_ADMIN_MODULE') {
+    define('YII2_CONTACT_ADMIN_MODULE', 'contact-admin');
+}
 ...
 'modules' => [
     ...
+    YII2_CONTACT_ADMIN_MODULE => [
+        'class' => 'derekisbusy\contact\backend\modules\contact\Module',
+        'userSettings' => [
+            ContactModule::USER_CLASS => 'common\models\User'
+        ]
+    ],
     'contact-admin' => 'derekisbusy\contact\frontend\modules\contact\Module',
-    'contact' => 'derekisbusy\contact\frontend\modules\contact\Module',
+    YII2_CONTACT_MODULE => [
+        'class' => 'derekisbusy\contact\frontend\modules\contact\Module',
+        'viewSettings' => [
+            ContactModule::VIEW_CONTACT => '@frontend/views/site/contact'
+        ],
+        'userSettings' => [
+            ContactModule::USER_CLASS => 'common\models\User'
+        ]
+    ],
     ...
 ],
 ...
