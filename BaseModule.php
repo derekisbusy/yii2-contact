@@ -40,7 +40,13 @@ abstract class BaseModule extends \yii\base\Module
         return 'common\models\User';
     }
     
-    public static function getUserModelIdName()
+    
+    public static function getUserTableName()
+    {
+        return call_user_func(self::getUserClassname().'::tableName');
+    }
+    
+    public static function getUserIdColumnName()
     {
         if (defined('YII2_USER_ID_COLUMN')) {
             return YII2_USER_ID_COLUMN;
@@ -51,9 +57,16 @@ abstract class BaseModule extends \yii\base\Module
         return 'id';
     }
     
-    public static function getUserTableName()
+    public static function getUsernameColumnName()
     {
-        return call_user_func(self::getUserClassname().'::tableName');
+        
+        if (defined('YII2_USER_USERNAME_COLUMN')) {
+            return YII2_USER_USERNAME_COLUMN;
+        }
+        if (Yii::$app) {
+            return Yii::$app->getModule(self::getModuleId())->userClass;
+        }
+        return 'username';
     }
     
     public function isBackendUser()

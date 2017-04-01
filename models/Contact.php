@@ -34,7 +34,7 @@ class Contact extends BaseContact
      */
     public function getAssignedTo()
     {
-        return $this->hasOne(Module::getUserClassname(), [Module::getUserModelIdName() => 'assigned_to']);
+        return $this->hasOne(Module::getUserClassname(), [Module::getUserIdColumnName() => 'assigned_to']);
     }
     
     /**
