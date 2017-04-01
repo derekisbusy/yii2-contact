@@ -102,7 +102,7 @@ abstract class BaseModule extends \yii\base\Module
             return YII2_USER_CLASSNAME;
         }
         if (Yii::$app) {
-            return Yii::$app->getModule(self::getModuleId())->userSettings[self::USER_CLASS];
+            return Yii::$app->getModule(static::getModuleId())->userSettings[self::USER_CLASS];
         }
         return 'common\models\User';
     }
@@ -110,7 +110,7 @@ abstract class BaseModule extends \yii\base\Module
     
     public static function getUserTableName()
     {
-        return call_user_func(self::getUserClassname().'::tableName');
+        return call_user_func(static::getUserClassname().'::tableName');
     }
     
     public static function getUserIdColumnName()
@@ -119,7 +119,7 @@ abstract class BaseModule extends \yii\base\Module
             return YII2_USER_ID_COLUMN;
         }
         if (Yii::$app) {
-            return Yii::$app->getModule(self::getModuleId())->userSettings[self::USER_ID];
+            return Yii::$app->getModule(static::getModuleId())->userSettings[self::USER_ID];
         }
         return 'id';
     }
@@ -131,7 +131,7 @@ abstract class BaseModule extends \yii\base\Module
             return YII2_USER_USERNAME_COLUMN;
         }
         if (Yii::$app) {
-            return Yii::$app->getModule(self::getModuleId())->userSettings[self::USER_USERNAME];
+            return Yii::$app->getModule(static::getModuleId())->userSettings[self::USER_USERNAME];
         }
         return 'username';
     }
