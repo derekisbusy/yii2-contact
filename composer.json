@@ -12,7 +12,8 @@
     ],
     "require": {
         "yiisoft/yii2": "*",
-        "kartik-v/yii2-export": "@dev"
+        "kartik-v/yii2-export": "@dev",
+        "kartik-v/yii2-dynagrid": "@dev"
     },
     "autoload": {
         "psr-4": {
