@@ -2,7 +2,7 @@
 
 namespace derekisbusy\contact\models;
 
-use dektrium\user\models\User;
+use derekisbusy\contact\BaseModule;
 use derekisbusy\contact\models\base\ContactReason;
 use derekisbusy\contact\models\Contact;
 use yii\base\Model;
@@ -87,7 +87,7 @@ use yii\data\ActiveDataProvider;
             ->andFilterWhere(['like', 'body', $this->body])
             ->andFilterWhere(['like', 'url', $this->url])
             ->andFilterWhere(['like', 'referrer', $this->referrer])
-            ->andFilterWhere(['like', User::tableName().'.username', $this->assignedTo])
+            ->andFilterWhere(['like', BaseModule::getUserTableName().'.'.BaseModule::getUsernameColumn(), $this->assignedTo])
             ->andFilterWhere(['like', ContactReason::tableName().'.reason', $this->reason]);
 
         return $dataProvider;
