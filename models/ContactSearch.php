@@ -2,7 +2,7 @@
 
 namespace derekisbusy\contact\models;
 
-use derekisbusy\contact\BaseModule;
+use derekisbusy\contact\backend\modules\contact\Module;
 use derekisbusy\contact\models\base\ContactReason;
 use derekisbusy\contact\models\Contact;
 use yii\base\Model;
@@ -59,8 +59,8 @@ use yii\data\ActiveDataProvider;
         ];
         
         $dataProvider->sort->attributes['assignedTo'] = [
-            'asc' => [BaseModule::getUserTableName().'.username' => SORT_ASC],
-            'desc' => [BaseModule::getUserTableName().'.username' => SORT_DESC],
+            'asc' => [Module::getUserTableName().'.username' => SORT_ASC],
+            'desc' => [Module::getUserTableName().'.username' => SORT_DESC],
         ];
 
         $this->load($params);
@@ -87,7 +87,7 @@ use yii\data\ActiveDataProvider;
             ->andFilterWhere(['like', 'body', $this->body])
             ->andFilterWhere(['like', 'url', $this->url])
             ->andFilterWhere(['like', 'referrer', $this->referrer])
-            ->andFilterWhere(['like', BaseModule::getUserTableName().'.'.BaseModule::getUsernameColumn(), $this->assignedTo])
+            ->andFilterWhere(['like', Module::getUserTableName().'.'.Module::getUsernameColumn(), $this->assignedTo])
             ->andFilterWhere(['like', ContactReason::tableName().'.reason', $this->reason]);
 
         return $dataProvider;
