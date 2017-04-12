@@ -29,13 +29,16 @@ class RequestController extends Controller
         $model->referrer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null;
         
         if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
-            
+            $body = "Name: {$model->name}\r\n"
+                . "Email: {$model->email}\r\n"
+                . "Phone: {$model->phone}\r\n"
+                . "Message: {$model->body}";
             if (Yii::$app->params['adminEmail']) {
                 $result = Yii::$app->mailer->compose()
                 ->setTo(Yii::$app->params['adminEmail'])
                 ->setFrom([$model->email => $model->name])
                 ->setSubject('Contact: '.$model->reason->reason)
-                ->setTextBody($model->body)
+                ->setTextBody($body)
                 ->send();
             }
             
@@ -52,7 +55,7 @@ class RequestController extends Controller
                     ->setTo($row['email'])
                     ->setFrom([$model->email => $model->name])
                     ->setSubject('Contact: '.$model->reason->reason)
-                    ->setTextBody($model->body)
+                    ->setTextBody($body)
                     ->send();
             }
             
