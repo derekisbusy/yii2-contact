@@ -36,7 +36,8 @@ class RequestController extends Controller
             if (Yii::$app->params['adminEmail']) {
                 $result = Yii::$app->mailer->compose()
                 ->setTo(Yii::$app->params['adminEmail'])
-                ->setFrom([$model->email => $model->name])
+                ->setReplyTo([$model->email => $model->name])
+                ->setFrom(Yii::$app->params['adminEmail'])
                 ->setSubject('Contact: '.$model->reason->reason)
                 ->setTextBody($body)
                 ->send();
