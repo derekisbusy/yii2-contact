@@ -54,7 +54,8 @@ class RequestController extends Controller
             foreach ($rows as $row) {
                 $result = Yii::$app->mailer->compose()
                     ->setTo($row['email'])
-                    ->setFrom([$model->email => $model->name])
+                    ->setReplyTo([$model->email => $model->name])
+                    ->setFrom(Yii::$app->params['adminEmail'])
                     ->setSubject('Contact: '.$model->reason->reason)
                     ->setTextBody($body)
                     ->send();
@@ -62,7 +63,11 @@ class RequestController extends Controller
             
             Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
             
-            return $this->refresh();
+            if (!$this->module->successUrl) {
+                return $this->refresh();
+            } else {
+                return $this->redirect($this->module->successUrl);
+            }
         } else {
             return $this->render($this->module->viewSettings[Module::VIEW_CONTACT], [
                 'model' => $model,
