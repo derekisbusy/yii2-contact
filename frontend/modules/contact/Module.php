@@ -14,6 +14,8 @@ class Module extends BaseModule
     
     public $viewSettings = [];
     
+    public $successUrl;
+    
     /**
      * @inheritdoc
      */
