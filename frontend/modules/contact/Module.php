@@ -15,13 +15,10 @@ class Module extends BaseModule
     public $viewSettings = [];
     
     public $successUrl;
-    
     /**
      * @inheritdoc
      */
     public $controllerNamespace = 'derekisbusy\contact\frontend\modules\contact\controllers';
-
-    
     /**
      * @inheritdoc
      */
